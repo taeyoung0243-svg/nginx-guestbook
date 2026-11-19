@@ -26,7 +26,7 @@ AI컴퓨터 및 Linux 운영체제 2차 과제. Ubuntu 서버에 Nginx를 설치
 ## 설치 (Ubuntu 24.04 / 26.04, WSL2·VM 모두 가능)
 
 ```bash
-git clone <이 레포 주소>
+git clone https://github.com/taeyoung0243-svg/nginx-guestbook.git
 cd nginx-guestbook
 chmod +x setup.sh
 sudo ./setup.sh
