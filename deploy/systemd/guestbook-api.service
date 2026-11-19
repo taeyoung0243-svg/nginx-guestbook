@@ -1,0 +1,26 @@
+# /etc/systemd/system/guestbook-api.service
+[Unit]
+Description=Guestbook API (FastAPI + Uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=guestbook
+Group=guestbook
+WorkingDirectory=/opt/guestbook/api
+# /var/lib/guestbook 을 자동으로 만들고 guestbook 사용자에게 권한을 준다
+StateDirectory=guestbook
+Environment=GUESTBOOK_DB=/var/lib/guestbook/guestbook.db
+# 외부가 아닌 127.0.0.1 에서만 받는다 -> 바깥에서는 Nginx(80)를 통해서만 접근 가능
+ExecStart=/opt/guestbook/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000 --proxy-headers
+Restart=on-failure
+RestartSec=3
+
+# 보안 옵션
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

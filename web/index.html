@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>리눅스 방명록</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23e95420'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Ubuntu · Nginx · FastAPI · SQLite</p>
+      <h1>리눅스 방명록</h1>
+      <p class="sub">이 페이지는 Nginx가 직접 보내 주고, 방명록 글은 Nginx 뒤의 FastAPI 서버가 SQLite에 저장합니다.</p>
+      <p id="server" class="server">서버 확인 중…</p>
+    </header>
+
+    <form id="form">
+      <input id="name" name="name" placeholder="이름" maxlength="20" required>
+      <textarea id="content" name="content" placeholder="한 줄 남기기 (200자 이내)" maxlength="200" required></textarea>
+      <button type="submit">남기기</button>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+
+    <section>
+      <h2>남긴 글 <span id="count"></span></h2>
+      <ul id="list"></ul>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
